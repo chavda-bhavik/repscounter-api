@@ -1,8 +1,8 @@
 {
-    "name": "nodejs-typescript-apollo-typeorm-boilerplate",
+    "name": "repscounter-api",
     "version": "1.0.0",
     "license": "MIT",
-    "description": "Nodejs Backend API Template using typescript apollo and typeorm",
+    "description": "Nodejs Backend API for RepsCounter",
     "main": "src/index.ts",
     "scripts": {
         "build": "tsc",
@@ -13,7 +13,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/chavda-bhavik/graphql-typeorm-boilerplate.git"
+        "url": "https://github.com/chavda-bhavik/repscounter-api.git"
     },
     "author": "chavda-bhavik",
     "dependencies": {
