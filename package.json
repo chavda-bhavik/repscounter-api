@@ -9,7 +9,8 @@
         "watch": "tsc -w && tspath",
         "dev": "nodemon -r ./tsconfig-paths.js dist/index.js",
         "start": "node -r ./tsconfig-paths.js dist/index.js",
-        "test": "jest --runInBand --detectOpenHandles"
+        "test": "jest --runInBand --detectOpenHandles",
+        "prepare": "husky install"
     },
     "repository": {
         "type": "git",
@@ -41,6 +42,7 @@
         "eslint": "^7.32.0",
         "eslint-config-airbnb-base": "^14.2.1",
         "eslint-plugin-import": "^2.24.2",
+        "husky": "^7.0.4",
         "jest": "^27.3.1",
         "prettier": "^2.4.0",
         "ts-jest": "^27.0.7",
