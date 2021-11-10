@@ -4,7 +4,7 @@ module.exports = [
     {
         name: 'development',
         type: 'postgres',
-        database: 'template',
+        database: 'repscounter',
         username: 'power',
         password: 'power',
         synchronize: true,
@@ -21,7 +21,7 @@ module.exports = [
     {
         name: 'test',
         type: 'postgres',
-        database: 'template-test',
+        database: 'repscounter-test',
         username: 'power',
         password: 'power',
         synchronize: true,
