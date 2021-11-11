@@ -1,9 +1,10 @@
 import { buildSchema } from 'type-graphql';
-import { UserResolver } from '../resolvers/User/User.resolver';
+import { ExerciseResolver } from '../resolvers/Exercise/Exercise.resolver';
+import { CountResolver } from '../resolvers/Count/Count.resolver';
 
 export const createSchema = async () => {
     return buildSchema({
-        resolvers: [UserResolver],
+        resolvers: [ExerciseResolver, CountResolver],
         validate: false,
         dateScalarMode: 'isoDate',
     });
