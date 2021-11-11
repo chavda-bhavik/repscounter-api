@@ -1,11 +1,7 @@
 import { Field, ObjectType } from 'type-graphql';
-import {
-    BaseEntity,
-    Column,
-    Entity,
-    PrimaryGeneratedColumn
-} from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import * as Yup from 'yup';
+import { Count } from './Count';
 
 @ObjectType()
 @Entity()
@@ -31,4 +27,7 @@ export class Exercise extends BaseEntity {
     @Field({ nullable: true })
     @Column({ type: 'text', nullable: true })
     target: string;
+
+    @OneToMany(() => Count, (count) => count.exercise)
+    counts: Count[];
 }

@@ -1,4 +1,4 @@
-import { User, Exercise } from '@/entities';
+import { User, Exercise, Count } from '@/entities';
 import { Field, ObjectType } from 'type-graphql';
 
 @ObjectType()
@@ -25,4 +25,13 @@ export class ExerciseResponseType {
 
     @Field(() => Exercise, { nullable: true })
     entity?: Exercise;
+}
+
+@ObjectType()
+export class CountResponseType {
+    @Field(() => [FieldError], { nullable: true })
+    errors?: FieldError[];
+
+    @Field(() => Count, { nullable: true })
+    entity?: Count;
 }
