@@ -145,7 +145,7 @@ describe('exercise operations', () => {
         });
     });
 
-    it('should delete exeercise', async () => {
+    it('should delete exercise', async () => {
         await mutate(deleteExperienceMutation, {
             variables: {
                 id: Number(exerciseId),

@@ -1,2 +1,3 @@
-export { Exercise } from './Exercise'
-export { User } from './User'
+export { Exercise } from './Exercise';
+export { Count } from './Count';
+export { User } from './User';

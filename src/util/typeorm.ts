@@ -1,13 +1,13 @@
 import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
 import { ValidationError } from 'yup';
 
-import { User, Exercise } from '@/entities';
+import { User, Exercise, Count } from '@/entities';
 import { FieldError } from '@/resolvers/SharedTypes';
 
-type EntityConstructor = typeof User | typeof Exercise;
-type EntityInstance = User | Exercise;
+type EntityConstructor = typeof User | typeof Exercise | typeof Count;
+type EntityInstance = User | Exercise | Count;
 
-const entities: { [key: string]: EntityConstructor } = { User, Exercise };
+const entities: { [key: string]: EntityConstructor } = { User, Exercise, Count };
 
 export const getData = async <T extends EntityConstructor>(
     Constructor: T,
