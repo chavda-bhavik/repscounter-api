@@ -14,7 +14,8 @@ export class Exercise extends BaseEntity {
 
     @Field()
     @PrimaryGeneratedColumn()
-    id: string;
+    @Column(() => Number)
+    id: number;
 
     @Field()
     @Column({ type: 'text' })
