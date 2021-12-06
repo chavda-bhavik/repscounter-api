@@ -1,11 +1,11 @@
-import { InputType, Field } from 'type-graphql';
+import { InputType, Field, Int } from 'type-graphql';
 
 @InputType()
 export class AddExerciseType {
     @Field({ nullable: true })
     name: string;
 
-    @Field({ nullable: true })
+    @Field(() => Int, { nullable: true })
     calories: number;
 
     @Field({ nullable: true })

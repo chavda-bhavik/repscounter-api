@@ -20,7 +20,7 @@ afterAll(async () => {
 
 const getAllExercisesQuery = `
     query Query {
-        exercies {
+        exercises {
             calories
             name
             id
@@ -127,7 +127,7 @@ describe('exercise operations', () => {
     it('should get all exercises', async () => {
         let response = await query(getAllExercisesQuery);
         // @ts-ignore
-        expect(response.data.exercies.length).toBeGreaterThan(1);
+        expect(response.data.exercises.length).toBeGreaterThan(1);
     });
 
     it('should get single exercise', async () => {
