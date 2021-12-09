@@ -19,7 +19,7 @@ afterAll(async () => {
 });
 
 const getAllCountsQuery = `
-    query Query($exerciseId: Float) {
+    query Query($exerciseId: Int) {
         counts(exerciseId: $exerciseId) {
             id
             date

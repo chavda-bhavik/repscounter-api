@@ -13,7 +13,8 @@ export class Count extends BaseEntity {
 
     @Field()
     @PrimaryGeneratedColumn()
-    id: string;
+    @Column(() => Number)
+    id: number;
 
     @Field()
     @Column({ type: 'date', nullable: false })

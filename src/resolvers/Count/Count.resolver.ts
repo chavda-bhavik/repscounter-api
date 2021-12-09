@@ -1,4 +1,4 @@
-import { Arg, Int, Mutation, Query, Resolver } from 'type-graphql';
+import { Arg, FieldResolver, Int, Mutation, Query, Resolver, Root } from 'type-graphql';
 import {
     createEntity,
     findEntityOrThrow,
@@ -12,6 +12,11 @@ import { Count, Exercise } from '@/entities';
 
 @Resolver(Count)
 export class CountResolver {
+    @FieldResolver(() => Exercise)
+    exercise(@Root() count: Count): Promise<Exercise | undefined> {
+        return findEntityOrThrow(Exercise, count.exerciseId);
+    }
+
     @Mutation(() => CountResponseType)
     async addCount(@Arg('data') data: CountInput): Promise<CountResponseType> {
         if (data.exerciseId) await findEntityOrThrow(Exercise, data.exerciseId);
@@ -20,7 +25,9 @@ export class CountResolver {
     }
 
     @Query(() => [Count])
-    async counts(@Arg('exerciseId', { nullable: true }) exerciseId: number): Promise<Count[]> {
+    async counts(
+        @Arg('exerciseId', () => Int, { nullable: true }) exerciseId: number,
+    ): Promise<Count[]> {
         let where = {};
         if (exerciseId) where = { where: { exerciseId } };
         let counts = await getData(Count, where);
