@@ -31,6 +31,7 @@ export class Count extends BaseEntity {
     @ManyToOne(() => Exercise, (exe) => exe.counts)
     exercise: Partial<Exercise>;
 
+    @Field()
     @Column()
     exerciseId: number;
 }
