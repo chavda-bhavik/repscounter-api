@@ -13,4 +13,7 @@ export class CountInput {
 
     @Field({ nullable: true })
     sets: number;
+
+    @Field({ nullable: true })
+    kg: number;
 }

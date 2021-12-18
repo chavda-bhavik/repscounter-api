@@ -25,6 +25,7 @@ const getAllCountsQuery = `
             date
             sets
             reps
+            kg
         }
     }
 `;
@@ -35,6 +36,7 @@ const getCountQuery = `
             date
             sets
             reps
+            kg
         }
     }
 `;
@@ -50,6 +52,7 @@ const addCountMutation = `
                 date
                 sets
                 reps
+                kg
             }
         }
     }
@@ -62,6 +65,7 @@ const updateCountMutation = `
                 id
                 reps
                 sets
+                kg
             }
             errors {
                 field
@@ -77,6 +81,7 @@ const deleteCountMutation = `
             date
             sets
             reps
+            kg
         }
     }
 `;
@@ -86,24 +91,35 @@ describe('count operations', () => {
         date: new Date().toISOString(),
         sets: 1,
         reps: 1,
-        exerciseId: 1,
+        kg: 1
     };
     let countId: number;
     const updateCountData: Partial<Count> = {
         sets: 2,
         reps: 2,
+        kg: 2,
     };
 
     it('should create new count', async () => {
         const response = await mutate(addCountMutation, {
             variables: {
-                data: countData,
+                data: {
+                    ...countData,
+                    exerciseId: 1,
+                }
             },
         });
         // @ts-ignore
         expect(response.data?.addCount?.errors).toBeNull();
         // @ts-ignore
         expect(response.data?.addCount?.entity).toBeDefined();
+        expect(response.data).toMatchObject({
+            addCount: {
+                entity: {
+                    ...countData
+                },
+            },
+        });
         // @ts-ignore
         countId = response.data.addCount.entity.id;
     });

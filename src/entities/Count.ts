@@ -19,6 +19,10 @@ export class Count extends BaseEntity {
 
     @Field({ nullable: true })
     @Column({ nullable: true })
+    kg: number;
+
+    @Field({ nullable: true })
+    @Column({ nullable: true })
     sets: number;
 
     @Field({ nullable: true })
