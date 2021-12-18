@@ -6,10 +6,7 @@ import { Exercise } from '.';
 @ObjectType()
 @Entity()
 export class Count extends BaseEntity {
-    static validations = Yup.object().shape({
-        sets: Yup.number().required().min(1),
-        reps: Yup.number().required().min(1),
-    });
+    static validations = Yup.object().shape({});
 
     @Field()
     @PrimaryGeneratedColumn()
@@ -20,12 +17,12 @@ export class Count extends BaseEntity {
     @Column({ type: 'date', nullable: false })
     date: string;
 
-    @Field()
-    @Column({ nullable: false })
+    @Field({ nullable: true })
+    @Column({ nullable: true })
     sets: number;
 
-    @Field()
-    @Column({ nullable: false })
+    @Field({ nullable: true })
+    @Column({ nullable: true })
     reps: number;
 
     @ManyToOne(() => Exercise, (exe) => exe.counts)
