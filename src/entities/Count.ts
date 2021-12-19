@@ -1,4 +1,4 @@
-import { Field, ObjectType } from 'type-graphql';
+import { Field, Float, ObjectType } from 'type-graphql';
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import * as Yup from 'yup';
 import { Exercise } from '.';
@@ -17,8 +17,8 @@ export class Count extends BaseEntity {
     @Column({ type: 'date', nullable: false })
     date: string;
 
-    @Field({ nullable: true })
-    @Column({ nullable: true })
+    @Field(() => Float, { nullable: true })
+    @Column({ type: 'float', nullable: true })
     kg: number;
 
     @Field({ nullable: true })

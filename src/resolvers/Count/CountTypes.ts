@@ -1,4 +1,4 @@
-import { InputType, Field } from 'type-graphql';
+import { InputType, Field, Float } from 'type-graphql';
 
 @InputType()
 export class CountInput {
@@ -14,6 +14,6 @@ export class CountInput {
     @Field({ nullable: true })
     sets: number;
 
-    @Field({ nullable: true })
+    @Field(() => Float, { nullable: true })
     kg: number;
 }
