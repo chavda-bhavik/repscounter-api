@@ -19,7 +19,7 @@ export class ExerciseResolver {
     }
 
     @Query(() => [Exercise])
-    async exercies(): Promise<Exercise[]> {
+    async exercises(): Promise<Exercise[]> {
         let exercises = await getData(Exercise);
         return exercises;
     }
