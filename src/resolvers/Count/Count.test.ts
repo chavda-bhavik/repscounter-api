@@ -91,7 +91,7 @@ describe('count operations', () => {
         date: new Date().toISOString(),
         sets: 1,
         reps: 1,
-        kg: 1
+        kg: 1,
     };
     let countId: number;
     const updateCountData: Partial<Count> = {
@@ -106,7 +106,7 @@ describe('count operations', () => {
                 data: {
                     ...countData,
                     exerciseId: 1,
-                }
+                },
             },
         });
         // @ts-ignore
@@ -116,7 +116,7 @@ describe('count operations', () => {
         expect(response.data).toMatchObject({
             addCount: {
                 entity: {
-                    ...countData
+                    ...countData,
                 },
             },
         });
