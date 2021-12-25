@@ -27,9 +27,11 @@ export class CountResolver {
     @Query(() => [Count])
     async counts(
         @Arg('exerciseId', () => Int, { nullable: true }) exerciseId: number,
+        @Arg('date', () => Date, { nullable: true }) date: Date,
     ): Promise<Count[]> {
         let where = {};
         if (exerciseId) where = { where: { exerciseId } };
+        if (date) where = { where: { date } };
         let counts = await getData(Count, where);
         return counts;
     }
