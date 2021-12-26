@@ -7,3 +7,11 @@ export class Calory {
     @Field()
     calories: number;
 }
+
+@ObjectType()
+export class Target {
+    @Field()
+    target: string;
+    @Field()
+    calories: number;
+}
