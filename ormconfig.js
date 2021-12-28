@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = [
     {
-        name: 'development',
+        name: 'default',
         type: 'postgres',
         database: 'repscounter',
         username: 'power',

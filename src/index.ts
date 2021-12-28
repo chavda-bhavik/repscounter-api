@@ -8,7 +8,7 @@ import { __prod__ } from './constants';
 
 const main = async () => {
     const PORT = process.env.PORT || 4000;
-    const options = await getConnectionOptions(process.env.NODE_ENV || 'development');
+    const options = await getConnectionOptions(process.env.NODE_ENV || 'default');
 
     await createConnection({ ...options, name: 'default' });
     const app = express();
