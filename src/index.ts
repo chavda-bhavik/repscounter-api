@@ -18,7 +18,7 @@ const main = async () => {
             credentials: true,
         }),
     );
-
+    app.use("/", express.static(__dirname + '/../build'));
     const apolloServer = new ApolloServer({
         schema: await createSchema(),
         context: ({ req, res }) => ({
