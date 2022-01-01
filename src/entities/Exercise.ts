@@ -1,5 +1,5 @@
 import { Field, ObjectType } from 'type-graphql';
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import * as Yup from 'yup';
 import { Count } from './Count';
 
@@ -13,9 +13,8 @@ export class Exercise extends BaseEntity {
     });
 
     @Field()
-    @PrimaryGeneratedColumn()
-    @Column(() => Number)
-    id: number;
+    @PrimaryColumn("uuid")
+    id: string;
 
     @Field()
     @Column({ type: 'text' })

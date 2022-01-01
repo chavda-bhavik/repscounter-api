@@ -1,5 +1,5 @@
 import { Field, Float, ObjectType } from 'type-graphql';
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryColumn, ManyToOne } from 'typeorm';
 import * as Yup from 'yup';
 import { Exercise } from '.';
 
@@ -9,9 +9,8 @@ export class Count extends BaseEntity {
     static validations = Yup.object().shape({});
 
     @Field()
-    @PrimaryGeneratedColumn()
-    @Column(() => Number)
-    id: number;
+    @PrimaryColumn("uuid")
+    id: string;
 
     @Field()
     @Column({ type: 'date', nullable: false })
@@ -29,10 +28,12 @@ export class Count extends BaseEntity {
     @Column({ nullable: true })
     reps: number;
 
-    @ManyToOne(() => Exercise, (exe) => exe.counts)
+    @ManyToOne(() => Exercise, (exe) => exe.counts, {
+        onDelete: 'CASCADE',
+    })
     exercise: Partial<Exercise>;
 
     @Field()
     @Column()
-    exerciseId: number;
+    exerciseId: string;
 }

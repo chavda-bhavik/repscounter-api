@@ -3,7 +3,10 @@ import { InputType, Field, Float } from 'type-graphql';
 @InputType()
 export class CountInput {
     @Field({ nullable: true })
-    exerciseId: number;
+    id: string;
+
+    @Field({ nullable: true })
+    exerciseId: string;
 
     @Field({ nullable: true })
     date: string;

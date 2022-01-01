@@ -1,4 +1,4 @@
-import { Arg, Int, Mutation, Query, Resolver } from 'type-graphql';
+import { Arg, Mutation, Query, Resolver } from 'type-graphql';
 import {
     createEntity,
     findEntityOrThrow,
@@ -25,21 +25,21 @@ export class ExerciseResolver {
     }
 
     @Query(() => Exercise)
-    async exercise(@Arg('id', () => Int) id: number): Promise<Exercise | undefined> {
+    async exercise(@Arg('id', () => String) id: string): Promise<Exercise | undefined> {
         let exercise = await findEntityOrThrow(Exercise, id);
         return exercise;
     }
 
     @Mutation(() => ExerciseResponseType)
     async updateExercise(
-        @Arg('id', () => Int) id: number,
+        @Arg('id', () => String) id: string,
         @Arg('data') data: AddExerciseType,
     ): Promise<ExerciseResponseType> {
         return updateEntity(Exercise, id, data);
     }
 
     @Mutation(() => Exercise)
-    async deleteExercise(@Arg('id', () => Int) id: number): Promise<Exercise | undefined> {
+    async deleteExercise(@Arg('id', () => String) id: string): Promise<Exercise | undefined> {
         return removeEntity(Exercise, id);
     }
 }
