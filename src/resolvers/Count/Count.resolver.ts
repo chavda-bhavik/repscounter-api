@@ -1,4 +1,4 @@
-import { Arg, FieldResolver, Int, Mutation, Query, Resolver, Root } from 'type-graphql';
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from 'type-graphql';
 import {
     createEntity,
     findEntityOrThrow,
@@ -26,7 +26,7 @@ export class CountResolver {
 
     @Query(() => [Count])
     async counts(
-        @Arg('exerciseId', () => Int, { nullable: true }) exerciseId: number,
+        @Arg('exerciseId', () => String, { nullable: true }) exerciseId: string,
         @Arg('date', () => Date, { nullable: true }) date: Date,
     ): Promise<Count[]> {
         let where = {};
@@ -37,14 +37,14 @@ export class CountResolver {
     }
 
     @Query(() => Count)
-    async count(@Arg('id', () => Int) id: number): Promise<Count | undefined> {
+    async count(@Arg('id', () => String) id: string): Promise<Count | undefined> {
         let count = await findEntityOrThrow(Count, id);
         return count;
     }
 
     @Mutation(() => CountResponseType)
     async updateCount(
-        @Arg('id', () => Int) id: number,
+        @Arg('id', () => String) id: string,
         @Arg('data') data: CountInput,
     ): Promise<CountResponseType> {
         if (data.exerciseId) await findEntityOrThrow(Exercise, data.exerciseId);
@@ -52,7 +52,7 @@ export class CountResolver {
     }
 
     @Mutation(() => Count)
-    async deleteCount(@Arg('id', () => Int) id: number): Promise<Count | undefined> {
+    async deleteCount(@Arg('id', () => String) id: string): Promise<Count | undefined> {
         return removeEntity(Count, id);
     }
 }

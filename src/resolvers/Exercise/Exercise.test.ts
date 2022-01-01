@@ -29,7 +29,7 @@ const getAllExercisesQuery = `
     }
 `;
 const getExerciseQuery = `
-    query exercise($id: Int!) {
+    query exercise($id: String!) {
         exercise(id: $id) {
             id
             name
@@ -55,7 +55,7 @@ const createExerciseMutation = `
     }
 `;
 const updateExerciseMutation = `
-    mutation updateExercise($data: AddExerciseType!, $id: Int!) {
+    mutation updateExercise($data: AddExerciseType!, $id: String!) {
         updateExercise(data: $data, id: $id) {
             errors {
                 field
@@ -71,7 +71,7 @@ const updateExerciseMutation = `
     }
 `;
 const deleteExperienceMutation = `
-    mutation DeleteExercise($id: Int!) {
+    mutation DeleteExercise($id: String!) {
         deleteExercise(id: $id) {
             id
             name
@@ -86,8 +86,9 @@ describe('exercise operations', () => {
         name: 'test exercise 1',
         calories: 100,
         target: 'test target 2',
+        id: "86658482-6aa5-11ec-90d6-0242ac120003"
     };
-    let exerciseId: number;
+    let exerciseId: string;
     const updateExerciseData: Partial<Exercise> = {
         name: 'exercise update',
         calories: 200,
@@ -112,7 +113,7 @@ describe('exercise operations', () => {
         const response = await mutate(updateExerciseMutation, {
             variables: {
                 data: updateExerciseData,
-                id: Number(exerciseId),
+                id: exerciseId,
             },
         });
         expect(response.data).toMatchObject({
@@ -133,7 +134,7 @@ describe('exercise operations', () => {
     it('should get single exercise', async () => {
         let response = await query(getExerciseQuery, {
             variables: {
-                id: Number(exerciseId),
+                id: exerciseId,
             },
         });
         // @ts-ignore
@@ -148,12 +149,12 @@ describe('exercise operations', () => {
     it('should delete exercise', async () => {
         await mutate(deleteExperienceMutation, {
             variables: {
-                id: Number(exerciseId),
+                id: exerciseId,
             },
         });
         let response = await query(getExerciseQuery, {
             variables: {
-                id: Number(exerciseId),
+                id: exerciseId,
             },
         });
         expect(response.data).toBeNull();

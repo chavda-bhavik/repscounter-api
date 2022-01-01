@@ -19,7 +19,7 @@ afterAll(async () => {
 });
 
 const getAllCountsQuery = `
-    query Query($exerciseId: Int) {
+    query Query($exerciseId: String) {
         counts(exerciseId: $exerciseId) {
             id
             date
@@ -30,7 +30,7 @@ const getAllCountsQuery = `
     }
 `;
 const getCountQuery = `
-    query count($id: Int!) {
+    query count($id: String!) {
         count(id: $id) {
             id
             date
@@ -58,7 +58,7 @@ const addCountMutation = `
     }
 `;
 const updateCountMutation = `
-    mutation updateCount($data: CountInput!, $id: Int!) {
+    mutation updateCount($data: CountInput!, $id: String!) {
         updateCount(data: $data, id: $id) {
             entity {
                 date
@@ -75,7 +75,7 @@ const updateCountMutation = `
     }
 `;
 const deleteCountMutation = `
-    mutation deleteCount($id: Int!) {
+    mutation deleteCount($id: String!) {
         deleteCount(id: $id) {
             id
             date
@@ -92,8 +92,9 @@ describe('count operations', () => {
         sets: 1,
         reps: 1,
         kg: 1,
+        id: "9c2e7c38-ab2e-4603-b7a1-0d6248fbbc05"
     };
-    let countId: number;
+    let countId: string;
     const updateCountData: Partial<Count> = {
         sets: 2,
         reps: 2,
@@ -105,7 +106,7 @@ describe('count operations', () => {
             variables: {
                 data: {
                     ...countData,
-                    exerciseId: 1,
+                    exerciseId: "31f117f9-1b12-4085-b3fb-d655f3f873d3",
                 },
             },
         });
@@ -128,7 +129,7 @@ describe('count operations', () => {
         const response = await mutate(updateCountMutation, {
             variables: {
                 data: updateCountData,
-                id: Number(countId),
+                id: countId,
             },
         });
         expect(response.data).toMatchObject({
@@ -149,7 +150,7 @@ describe('count operations', () => {
     it('should get all counts for exercise', async () => {
         let response = await query(getAllCountsQuery, {
             variables: {
-                exerciseId: 1,
+                exerciseId: "31f117f9-1b12-4085-b3fb-d655f3f873d3",
             },
         });
         // @ts-ignore
@@ -159,7 +160,7 @@ describe('count operations', () => {
     it('should get single count', async () => {
         let response = await query(getCountQuery, {
             variables: {
-                id: Number(countId),
+                id: countId,
             },
         });
         // @ts-ignore
@@ -174,12 +175,12 @@ describe('count operations', () => {
     it('should delete count', async () => {
         await mutate(deleteCountMutation, {
             variables: {
-                id: Number(countId),
+                id: countId,
             },
         });
         let response = await query(getCountQuery, {
             variables: {
-                id: Number(countId),
+                id: countId,
             },
         });
         expect(response.data).toBeNull();

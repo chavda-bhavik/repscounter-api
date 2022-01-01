@@ -1,4 +1,4 @@
-import { User, Exercise, Count } from '@/entities';
+import { Exercise, Count } from '@/entities';
 import { Field, ObjectType } from 'type-graphql';
 
 @ObjectType()
@@ -8,16 +8,6 @@ export class FieldError {
     @Field()
     message: string;
 }
-
-@ObjectType()
-export class ResponseType {
-    @Field(() => [FieldError], { nullable: true })
-    errors?: FieldError[];
-
-    @Field(() => User, { nullable: true })
-    entity?: User;
-}
-
 @ObjectType()
 export class ExerciseResponseType {
     @Field(() => [FieldError], { nullable: true })
