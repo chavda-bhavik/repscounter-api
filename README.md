@@ -20,12 +20,17 @@
   <li><a href="https://jestjs.io" target="_blank">JestJS</a> To wite Unit Test Cases</li>
 </ul>
 
-## 📩 Install
+## Want to Run it?
+### 🪄 Setup
+* Create postgress database named **repscounter** and **repscounter-test**
+* Update database credentials in **ormconfig.js**
+
+### 📩 Install
 ```sh
-yarn install
+yarn 
 ```
 
-## 💨 Run
+### 💨 Run
 ```sh
 yarn watch
 yarn dev
