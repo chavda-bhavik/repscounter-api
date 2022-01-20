@@ -18,7 +18,6 @@ const main = async () => {
             credentials: true,
         }),
     );
-    app.use("/", express.static(__dirname + '/../build'));
     const apolloServer = new ApolloServer({
         schema: await createSchema(),
         context: ({ req, res }) => ({
@@ -28,10 +27,8 @@ const main = async () => {
     });
     await apolloServer.start();
 
-    apolloServer.applyMiddleware({
-        app,
-        cors: false,
-    });
+    app.use('/', express.static(__dirname + '/../build'));
+    app.use('*', (_req, res) => res.redirect('/'));
     app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
     });
