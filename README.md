@@ -1,5 +1,5 @@
 <div align="center">
-  <h2>RepsCountere</h2>
+  <h2>RepsCounter</h2>
 
   ### GraphQL API built in NodeJS for RepsCounter
   
@@ -30,7 +30,7 @@
 - Linting and formatting with **eslint** and **prettier**
 
 ## Problems Face and Solved
-- Writing Unit tests with Jest proovided good learning
+- Writing Unit tests with Jest provided good learning
 
 ## Technologies 🤖
 <ul>
