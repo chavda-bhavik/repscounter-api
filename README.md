@@ -8,7 +8,7 @@
   <a href="https://repscounter.herokuapp.com" target="_blank">Live demo</a> | <a href="https://github.com/chavda-bhavik/repscounter" target="_blank">Frontend Code</a>
 </div>
 
-## Running in your local 🏃
+## Running locally
 
 ### Setup
 * Create postgress database named **repscounter** and **repscounter-test**
