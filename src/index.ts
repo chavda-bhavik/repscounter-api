@@ -26,6 +26,7 @@ const main = async () => {
         }),
     });
     await apolloServer.start();
+    apolloServer.applyMiddleware({ app, cors: false });
 
     app.use('/', express.static(__dirname + '/../build'));
     app.use('*', (_req, res) => res.redirect('/'));
