@@ -1,18 +1,38 @@
-<h1 align="center">RepsCounter API</h1>
+<div align="center">
+  <h2>RepsCountere</h2>
 
-> Node GraphQL API for RepsCounter.
+  ### GraphQL API built in NodeJS for RepsCounter
+  
+  ![RepsCounter-V2](https://user-images.githubusercontent.com/50201755/158003403-eb577043-7734-4e4a-96b5-6a10977f327f.gif)
 
-## ✨ Features
-* Abstract Database functions to faster the Development
-* Linting and formatting with **eslint** and **prettier**
+  <a href="https://repscounter.herokuapp.com" target="_blank">Live demo</a> | <a href="https://github.com/chavda-bhavik/repscounter" target="_blank">Frontend Code</a>
+</div>
 
-## Frontend
-> Repscounter Frontend source is available <a href="https://github.com/chavda-bhavik/repscounter">here</a>.
+## Running in your local 🏃
 
-## 🤯 Problems Face and Solved
-* Writing Unit tests with Jest proovided good learning
+### Setup
+* Create postgress database named **repscounter** and **repscounter-test**
+* Update database credentials in **ormconfig.js**
 
-## 🤖 Things used for building Application
+### Steps
+- `git clone https://github.com/chavda-bhavik/repscounter-api`
+- `yarn` (after navigating inside the directory)
+- `yarn watch && yarn dev`
+
+----
+
+## About RepsCounter
+
+### Features
+- Built on Typescript
+- Tests written using **jest**
+- Abstracted Database functions to easy the Development
+- Linting and formatting with **eslint** and **prettier**
+
+## Problems Face and Solved
+- Writing Unit tests with Jest proovided good learning
+
+## Technologies 🤖
 <ul>
   <li><a href="https://www.npmjs.com/package/apollo-server-express" target="_blank">Apllo-Server-Express</a>, <a href="https://expressjs.com" target="_blank">ExpressJS</a> To Develop API</li>
   <li><a href="https://typeorm.io" target="_blank">Typeorm</a> ORM to interect with Database</li>
@@ -20,27 +40,4 @@
   <li><a href="https://jestjs.io" target="_blank">JestJS</a> To wite Unit Test Cases</li>
 </ul>
 
-## Want to Run it?
-### 🪄 Setup
-* Create postgress database named **repscounter** and **repscounter-test**
-* Update database credentials in **ormconfig.js**
-
-### 📩 Install
-```sh
-yarn 
-```
-
-### 💨 Run
-```sh
-yarn watch
-yarn dev
-```
-
-## 😎 Author
-
-👤 **Bhavik Chavda**
-
-* Website: [bhavikchavda.com](http://www.bhavikchavda.com)
-* Twitter: [@chavdabhavik7](https://twitter.com/chavdabhavik7)
-* Github: [@chavda-bhavik](https://github.com/chavda-bhavik)
-* LinkedIn: [@chavdabhavik7](https://linkedin.com/in/chavdabhavik7)
+------------
